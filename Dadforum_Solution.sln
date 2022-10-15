@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dadforum_blazor", "Dadforum_blazor\Dadforum_blazor.csproj", "{EAEB51C0-8A2D-4DDB-85D2-38ABBFAE0E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dadforum", "Dadforum\Dadforum.csproj", "{25516E04-1AC6-4AD5-A66A-6343409929AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAEB51C0-8A2D-4DDB-85D2-38ABBFAE0E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEB51C0-8A2D-4DDB-85D2-38ABBFAE0E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEB51C0-8A2D-4DDB-85D2-38ABBFAE0E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEB51C0-8A2D-4DDB-85D2-38ABBFAE0E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25516E04-1AC6-4AD5-A66A-6343409929AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25516E04-1AC6-4AD5-A66A-6343409929AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25516E04-1AC6-4AD5-A66A-6343409929AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25516E04-1AC6-4AD5-A66A-6343409929AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
