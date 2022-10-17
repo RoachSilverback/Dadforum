@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using System.Text.Json.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
 
 using Data;
 using Service;
@@ -38,6 +42,12 @@ using (var scope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 app.UseCors(AllowThings);
 
+JsonSerializerOptions options = new()
+{
+    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+    WriteIndented = true
+};
+
 app.MapGet("/api/posts", (PostService service) =>
 {
     return service.GetPosts();
@@ -47,11 +57,7 @@ app.MapGet("/api/posts/{id}", (PostService service, int id) => {
     return service.GetPost(id);
 });
 
-app.MapGet("/api/comments/{id}", (PostService service, int id) => {
-    return service.GetComments(id);
-});
-
-app.MapPost("/api/posts/", (PostService service, NewPostData data) =>
+app.MapPost("/api/posts", (PostService service, NewPostData data) =>
 {
     string result = service.CreatePost(data.NameOfAuthor, data.PostString);
     return result;

@@ -7,7 +7,7 @@ namespace Data
     public class PostContext : DbContext
     {
         public DbSet<Post> Posts => Set<Post>();
-        public DbSet<Comment> Comments {get; set;}
+        public DbSet<Comment> Comments => Set<Comment>();
 
         // public string DbPath {get; }
         // public PostContext()

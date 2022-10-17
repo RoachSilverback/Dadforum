@@ -42,13 +42,7 @@ public class PostService
 
 // Metode til at hente post på id
     public Post GetPost(int id) {
-        return database.Posts.FirstOrDefault(p => p.PostID == id);
-    }
-
-// Metode til at hente Comments på id
-    public async Task<Comment> GetComments(int id) {
-        return await database.Comments
-        .FirstOrDefaultAsync(c => c.Post.PostID == id);
+        return database.Posts.Include(p => p.Comments).FirstOrDefault(p => p.PostID == id);
     }
 
 // METODE TIL AT LAVE ET POST
