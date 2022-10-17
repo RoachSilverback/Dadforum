@@ -47,8 +47,8 @@ app.MapGet("/api/posts/{id}", (PostService service, int id) => {
     return service.GetPost(id);
 });
 
-app.MapGet("/api/comments", (PostService service) => {
-    return service.GetComments().Select(c => new { c.CommentID, c.CommentString});
+app.MapGet("/api/comments/{id}", (PostService service, int id) => {
+    return service.GetComments(id);
 });
 
 app.MapPost("/api/posts/", (PostService service, NewPostData data) =>

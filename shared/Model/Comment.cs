@@ -7,6 +7,9 @@ namespace shared.Model
         // public DateOnly DateOfComment {get; set;}
         public int Upvotes {get; set; }
         public int Downvotes {get; set; }
+        public Post Post {get; set; }
+
+
         public Comment(string commentString = "", int upvotes = 0, int downvotes = 0)
         {
             CommentString = commentString;

@@ -25,6 +25,18 @@ public class ApiService
         string url = $"{baseAPI}/api/posts";
         return await http.GetFromJsonAsync<Post[]>(url);
     }
+
+    public async Task<Post> GetPost(int id)
+    {
+        string url = $"{baseAPI}/api/posts/{id}";
+        return await http.GetFromJsonAsync<Post>(url);
+    }
+
+    // public async Task<List<Comment>> GetComments(int id)
+    // {
+    //     string url = $"{baseAPI}/api/posts/{id}";
+    //     return await http.GetFromJsonAsync<List<Comment>>(url);
+    // }
 }
 
 

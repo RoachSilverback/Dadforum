@@ -21,9 +21,8 @@ else
         @foreach (var post in posts)
         {
             <tr>
-                <td><a href="/post/@post.PostID"></a></td>
                 <td>@post.NameOfAuthor</td>
-                <td>@post.PostString</td>
+                <td><a href="/api/posts/@post.PostID">@post.PostString</a></td>
                 <td>@post.Upvotes</td>
                 <td>@post.Downvotes</td>
             </tr>

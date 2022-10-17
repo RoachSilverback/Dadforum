@@ -27,9 +27,9 @@ public class PostService
 
         Comment comment = database.Comments.FirstOrDefault()!;
         if (comment == null){
-            post.Comments.Add(new Comment {CommentString = "Få en ny uddannelse", Upvotes = 500, Downvotes = 123});
-            post.Comments.Add(new Comment {CommentString = "Stop it GOKU!", Upvotes = 2131, Downvotes = 23});
-            post.Comments.Add(new Comment {CommentString = "Hvordan får man en fisk til at svømme hurtigere? Man tuner den XD", Upvotes = 123423, Downvotes = 0});
+            post.Comments.Add(new Comment {CommentString = "Få en ny uddannelse", Upvotes = 500, Downvotes = 123, Post = post});
+            post.Comments.Add(new Comment {CommentString = "Stop it GOKU!", Upvotes = 2131, Downvotes = 23, Post = post});
+            post.Comments.Add(new Comment {CommentString = "Hvordan får man en fisk til at svømme hurtigere? Man tuner den XD", Upvotes = 123423, Downvotes = 0, Post = post});
             database.SaveChanges();
         }      
     }
@@ -45,8 +45,10 @@ public class PostService
         return database.Posts.FirstOrDefault(p => p.PostID == id);
     }
 
-    public List<Comment> GetComments() {
-        return database.Comments.ToList();
+// Metode til at hente Comments på id
+    public async Task<Comment> GetComments(int id) {
+        return await database.Comments
+        .FirstOrDefaultAsync(c => c.Post.PostID == id);
     }
 
 // METODE TIL AT LAVE ET POST

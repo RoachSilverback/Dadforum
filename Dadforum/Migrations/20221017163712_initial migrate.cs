@@ -4,7 +4,7 @@
 
 namespace Dadforum.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class initialmigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace Dadforum.Migrations
                     CommentString = table.Column<string>(type: "TEXT", nullable: true),
                     Upvotes = table.Column<int>(type: "INTEGER", nullable: false),
                     Downvotes = table.Column<int>(type: "INTEGER", nullable: false),
-                    PostID = table.Column<int>(type: "INTEGER", nullable: true)
+                    PostID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,8 @@ namespace Dadforum.Migrations
                         name: "FK_Comments_Posts_PostID",
                         column: x => x.PostID,
                         principalTable: "Posts",
-                        principalColumn: "PostID");
+                        principalColumn: "PostID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
