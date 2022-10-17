@@ -30,6 +30,12 @@ builder.Services.AddDbContext<PostContext>(options =>
 
 builder.Services.AddScoped<PostService>();
 
+builder.Services.Configure<JsonOptions>(options =>
+{
+options.SerializerOptions.ReferenceHandler =    
+    System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
+
 var app = builder.Build();
 
 // Seed data hvis nødvendigt
@@ -41,12 +47,6 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseCors(AllowThings);
-
-JsonSerializerOptions options = new()
-{
-    ReferenceHandler = ReferenceHandler.IgnoreCycles,
-    WriteIndented = true
-};
 
 app.MapGet("/api/posts", (PostService service) =>
 {

@@ -8,7 +8,7 @@ namespace shared.Model
         public string ?PostString {get; set; }
         public int Upvotes {get; set; }
         public int Downvotes {get; set; }
-        public List<Comment> Comments {get; set; }
+        public List<Comment> Comments {get; set; } = new List<Comment>();
         public Post (string nameofauthor, string poststring, int upvotes, int downvotes) {
             NameOfAuthor = nameofauthor;
             PostString = poststring;
