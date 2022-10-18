@@ -25,6 +25,8 @@ else
                 <td><a href="/api/posts/@post.PostID">@post.PostString</a></td>
                 <td>@post.Upvotes</td>
                 <td>@post.Downvotes</td>
+                <td><button @onclick="() => Upvote(post.PostID)"> Upvote</button></td>
+                <td><button @onclick="() => Downvote(post.PostID)"> Downvote</button></td>
             </tr>
         }
     </table>
@@ -39,5 +41,15 @@ else
     protected override async Task OnInitializedAsync()
     {
         posts = await apiService.GetPosts();
+    }
+
+    private async void Upvote(int id)
+    {
+        var upvotePost = await apiService.UpvotePost(id);
+    }
+
+    private async void Downvote(int id)
+    {
+        var downvotePost = await apiService.DownvotePost(id);
     }
 }

@@ -57,10 +57,15 @@ app.MapGet("/api/posts/{id}", (PostService service, int id) => {
     return service.GetPost(id);
 });
 
-app.MapPost("/api/posts", (PostService service, NewPostData data) =>
+app.MapPost("/api/Createposts", (PostService service, NewPostData data) =>
 {
     string result = service.CreatePost(data.NameOfAuthor, data.PostString);
-    return result;
+    return new { message = result};
+});
+
+app.MapPost("/api/comments", (PostService service, NewCommentData data) => {
+    string result = service.CreateComment(data.CommentString, data.PostID);
+    return new { message = result};
 });
 
 app.MapPut("/api/posts/{id}/upvote", (PostService service, int id) => {
@@ -86,3 +91,4 @@ app.MapPut("/api/comments/{id}/downvote", (PostService service, int id) => {
 app.Run();
 
 record NewPostData(string NameOfAuthor, string PostString);
+record NewCommentData(string CommentString, int PostID);

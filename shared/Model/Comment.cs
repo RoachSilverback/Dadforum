@@ -5,8 +5,8 @@ namespace shared.Model
         public int CommentID {get; set;}
         public string ?CommentString {get; set;}
         // public DateOnly DateOfComment {get; set;}
-        public int Upvotes {get; set; }
-        public int Downvotes {get; set; }
+        public int ?Upvotes {get; set; }
+        public int ?Downvotes {get; set; }
         public Post Post {get; set; }
 
 

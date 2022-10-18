@@ -1,0 +1,26 @@
+@using Dadforum_blazor.Data;
+@inject ApiService apiService
+
+<PageTitle>Post en Kommentar for the dads</PageTitle>
+
+<div>
+    <br/>
+    <h3>Skriv din Kommentar her</h3>
+    <input placeholder="Commentstring" type="input" id="commentstring" @bind-value="commentstring"/>
+    <button id="createPostButton" type="button" @onclick="CreateNewComment">Post comment</button>
+</div>
+
+@code
+{
+    [Parameter]
+    public int PostId { get; set; }
+    public string? commentstring;
+    private async void CreateNewComment()
+    {
+        if (commentstring == null)
+        {
+            return;
+        }
+        await apiService.CreateComment(commentstring, PostId);
+    }
+}

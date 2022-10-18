@@ -21,9 +21,9 @@ else
         <h4>Comment</h4>
         <table>
             <tr>
-                <th>Username</th>
-                <th>Comment</th>
-                <th colspan="3">Votes</th>
+                <th>Kommentar</th>
+                <th>Upvotes</th>
+                <th colspan="3">Downvotes</th>
             </tr>
             @foreach (var comment in Post.Comments)
             {
@@ -31,19 +31,23 @@ else
                     <td>@comment.CommentString</td>
                     <td>@comment.Upvotes</td>
                     <td>@comment.Downvotes</td>
-                    <td><button @onclick="() => Upvote(comment.CommentID)"></button></td>
+                    <td><button @onclick="() => Upvote(comment.CommentID)"> Upvote</button></td>
+                    <td><button @onclick="() => Downvote(comment.CommentID)"> Downvote</button></td>
                 </tr>
             }
         </table>
     </div>
 }
 
-@code
+<CreateComment PostId=@PostId></CreateComment>
+
+@code   
 {
     [Parameter]
     public string Id {get; set; }
     public int PostId { get { return int.Parse(Id);} }
     public Post Post { get; set; }
+    private Post? voteComment;
 
     protected override async Task OnInitializedAsync()
     {
@@ -52,6 +56,10 @@ else
 
     private async void Upvote(int id)
     {
-        Console.WriteLine("lav den her");
+        var upvoteComment = await apiService.UpvoteComment(id);
+    }
+    private async void Downvote(int id)
+    {
+        var downvoteComment = await apiService.DownvoteComment(id);
     }
 }

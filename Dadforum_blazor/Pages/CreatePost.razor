@@ -1,0 +1,29 @@
+@page "/api/Createposts"
+
+@using Dadforum_blazor.Data;
+@using shared.Model;
+@inject ApiService ApiService
+
+<PageTitle> Post en post til fædrene </PageTitle>
+
+<div class="contents">
+    <h3>Skriv din Post nedenunder fader</h3>
+    <input placeholder="Navn" type="input" id="nameofauthor" @bind-value="nameofauthor"/>
+    <input placeholder="Din Post" type="input" id="poststring" @bind-value="poststring"/>
+    <button id="createPostButton" type="button" @onclick="CreateNewPost">Post Post</button>
+</div>
+
+@code
+{
+    
+    public string? nameofauthor;
+    public string? poststring;
+    private async void CreateNewPost()
+    {
+        if (poststring == null && nameofauthor == null)
+        {
+            return;
+        }
+        await ApiService.CreatePost(nameofauthor, poststring);
+    }
+}

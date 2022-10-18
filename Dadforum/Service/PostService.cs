@@ -51,8 +51,9 @@ public class PostService
         database.SaveChanges();
         return "Post Created";
     }
-    public string CreateComment(string commentstring) {
-        database.Comments.Add(new Comment { CommentString = commentstring});
+    public string CreateComment(string commentstring, int postID) {
+        Post post = database.Posts.FirstOrDefault(p => p.PostID == postID);
+        database.Comments.Add(new Comment { CommentString = commentstring, Post = post});
         database.SaveChanges();
         return "Comment Created";
     }
@@ -68,7 +69,7 @@ public class PostService
 
     public Post PostChangeDownvote(int postid) {
         Post post = database.Posts.FirstOrDefault(p => p.PostID == postid);
-        post.Downvotes--;
+        post.Downvotes++;
         database.SaveChanges();
         return post;
     }
@@ -81,7 +82,7 @@ public class PostService
     }
     public Comment CommentChangeDownvote(int commentid) {
         Comment comment = database.Comments.FirstOrDefault(c => c.CommentID == commentid);
-        comment.Downvotes--;
+        comment.Downvotes++;
         database.SaveChanges();
         return comment;
     }
