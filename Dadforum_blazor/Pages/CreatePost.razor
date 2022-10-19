@@ -6,11 +6,43 @@
 
 <PageTitle> Post en post til fædrene </PageTitle>
 
-<div class="contents">
-    <h3>Skriv din Post nedenunder fader</h3>
-    <input placeholder="Navn" type="input" id="nameofauthor" @bind-value="nameofauthor"/>
-    <input placeholder="Din Post" type="input" id="poststring" @bind-value="poststring"/>
-    <button id="createPostButton" type="button" @onclick="CreateNewPost">Post Post</button>
+<style>
+    div.contents__group
+    {
+      position: relative;
+        padding: 5px;       
+        width: 800px;
+        font-size: x-large;
+        background-color: beige;
+        border: solid;
+        border-color: black;
+        border-radius: 5px;¨
+        font-size: 20px;
+    }
+    input
+    {
+      width: 600px;
+    }
+</style>
+
+    <h3>Skriv din Post nedenunder, fader</h3>
+
+<div class="contents__group">
+    <table>
+      <th>Dit navn</th>
+      <tr><input type="input" placeholder="Skriv dit navn her, fader" id="nameofauthor" name="nameofauthor" @bind-value="nameofauthor" required/>
+        <label for="nameofauthor" class="form__label"></label>
+      </tr>
+      <th>Din Post</th>
+      <tr>
+        <input type="input" placeholder="Skriv din post her, fader"  id="poststring" name="poststring"  @bind-value="poststring" required/>
+        <label for="nameofauthor" class="form__label"></label>
+      </tr>
+      <br/>
+      <tr>
+        <button id="createPostButton" type="button" @onclick="CreateNewPost">Post Post</button>
+      </tr>
+    </table>
 </div>
 
 @code

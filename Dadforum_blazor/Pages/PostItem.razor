@@ -6,40 +6,83 @@
 
 <PageTitle>Dadforum Tråd</PageTitle>
 
+<style>
+    div.post
+    {
+        position: relative;
+        padding: 5px;       
+        width: 800px;
+        font-size: x-large;
+        background-color: beige;
+        border: solid;
+        border-color: black;
+        border-radius: 5px;¨
+        font-size: 20px;
+    }
+    div.kommentarer
+    {
+        position: relative;
+        padding: 10px;
+        width: 800px;
+        background-color: beige;
+        border: solid;
+        border-color: black;
+        border-radius: 5px;
+    }
+    div.postComment
+    {
+        position: static;
+        padding: 5px;
+        width: 800px;
+        background-color: beige;
+        border: solid;
+        border-color: black;
+        border-radius: 5px;
+    }
+
+</style>
+
+
 @if (Post == null)
 {
     <p><em>Loading...</em></p>
 }
 else 
 {
-    <div class="contents">
-        <h4>@Post.NameOfAuthor</h4>
-        <p>@Post.PostString</p>
+    <div class="post">
+        <h5>Name of Author - @Post.NameOfAuthor</h5>
+        <p>Post - @Post.PostString</p>
     </div>
 
-    <div class="contents">
-        <h4>Comment</h4>
+    <br/>
+
+    <div class="kommentarer">
+        <h3>Comment</h3>
+        
         <table>
             <tr>
                 <th>Kommentar</th>
                 <th>Upvotes</th>
-                <th colspan="3">Downvotes</th>
+                <th>Downvotes</th> 
             </tr>
             @foreach (var comment in Post.Comments)
             {
                 <tr>
                     <td>@comment.CommentString</td>
-                    <td>@comment.Upvotes</td>
+                    <td>@comment.Upvotes</td>                 
                     <td>@comment.Downvotes</td>
                     <td><button @onclick="() => Upvote(comment.CommentID)"> Upvote</button></td>
                     <td><button @onclick="() => Downvote(comment.CommentID)"> Downvote</button></td>
                 </tr>
-            }
+            }     
         </table>
+        </div>
+    <br/>
+    <div class="postComment">
+        <CreateComment PostId=@PostId></CreateComment>
     </div>
-}
 
-<CreateComment PostId=@PostId></CreateComment>
+}
 
 @code   
 {

@@ -3,10 +3,17 @@
 
 <PageTitle>Post en Kommentar for the dads</PageTitle>
 
-<div>
+<style>
+    input
+    {
+        width: 500px;
+    }
+</style>
+
+<div class="createcomment">
     <br/>
     <h3>Skriv din Kommentar her</h3>
-    <input placeholder="Commentstring" type="input" id="commentstring" @bind-value="commentstring"/>
+    <input placeholder="Kommentar" type="input" id="commentstring" @bind-value="commentstring"/>
     <button id="createPostButton" type="button" @onclick="CreateNewComment">Post comment</button>
 </div>
 

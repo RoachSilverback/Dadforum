@@ -7,16 +7,34 @@
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
+<style>
+    div.tableofpost
+    {
+        position: relative;
+        padding: 5px;       
+        width: 1200px;
+        font-size: x-large;
+        background-color: beige;
+        border: solid;
+        border-color: black;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+</style>
+
 @if (posts == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+<div class="tableofpost">
     <table>
         <tr>
-            <th>Title</th>
+            <th>Author</th>
             <th>Content</th>
+            <th>Upvotes</th>
+            <th>Downvotes</th>
         </tr>
         @foreach (var post in posts)
         {
@@ -30,7 +48,7 @@ else
             </tr>
         }
     </table>
-
+</div>
     <br/>
 }
 
