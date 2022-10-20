@@ -19,17 +19,17 @@ public class PostService
     public void SeedData(){
         Post post = database.Posts.FirstOrDefault()!;
         if (post == null){
-            database.Add(new Post { NameOfAuthor = "Greg Albertsen", PostString = "Hvad skal man lave som nyuddannet bondemand?", Upvotes = 2, Downvotes = 50});
-            database.Add(new Post { NameOfAuthor = "Tobias Rahim", PostString = "How much wood could a woodchug chug if a woodchug could chug wood?", Upvotes = 200, Downvotes = 0});
-            database.Add(new Post { NameOfAuthor = "Mikkel Allansen", PostString = "Hvad er den bedste far joke i historien?", Upvotes = 5, Downvotes = 2});
+            database.Add(new Post { DateOfSubmission = DateTime.Now, NameOfAuthor = "Greg Albertsen", PostString = "Hvad skal man lave som nyuddannet bondemand?", Content = "Imagine at skrive reel seeddata", Upvotes = 2, Downvotes = 50});
+            database.Add(new Post { DateOfSubmission = DateTime.Now, NameOfAuthor = "Tobias Rahim", PostString = "How much wood could a woodchug chug if a woodchug could chug wood?", Content = "Imagine at skrive mere reel seeddata", Upvotes = 30, Downvotes = 0});
+            database.Add(new Post { DateOfSubmission = DateTime.Now, NameOfAuthor = "Mikkel Allansen", PostString = "Hvad er den bedste far joke i historien?", Content="Imagine at skrive en tredje seeddata", Upvotes = 5, Downvotes = 2});
             database.SaveChanges();
             }
 
         Comment comment = database.Comments.FirstOrDefault()!;
         if (comment == null){
-            post.Comments.Add(new Comment {CommentString = "Få en ny uddannelse", Upvotes = 500, Downvotes = 123, Post = post});
-            post.Comments.Add(new Comment {CommentString = "Stop it GOKU!", Upvotes = 2131, Downvotes = 23, Post = post});
-            post.Comments.Add(new Comment {CommentString = "Hvordan får man en fisk til at svømme hurtigere? Man tuner den XD", Upvotes = 123423, Downvotes = 0, Post = post});
+            post.Comments.Add(new Comment {DateOfComment = DateTime.Now, Author = "Knud Erik", CommentString = "Få en ny uddannelse", Upvotes = 300, Downvotes = 123, Post = post});
+            post.Comments.Add(new Comment {DateOfComment = DateTime.Now, Author = "Peter Plys", CommentString = "Stop it GOKU!", Upvotes = 131, Downvotes = 23, Post = post});
+            post.Comments.Add(new Comment {DateOfComment = DateTime.Now, Author = "Mama cita", CommentString = "Hvordan får man en fisk til at svømme hurtigere? Man tuner den XD", Upvotes = 123, Downvotes = 0, Post = post});
             database.SaveChanges();
         }      
     }
@@ -46,14 +46,14 @@ public class PostService
     }
 
 // METODE TIL AT LAVE ET POST
-    public string CreatePost(string nameofauthor, string content) {
-        database.Posts.Add(new Post { NameOfAuthor = nameofauthor, PostString = content, Upvotes = 0, Downvotes = 0});
+    public string CreatePost(DateTime dateofsubmission, string nameofauthor, string poststring, string content) {
+        database.Posts.Add(new Post {DateOfSubmission = DateTime.Now, NameOfAuthor = nameofauthor, PostString = poststring, Content = content, Upvotes = 0, Downvotes = 0});
         database.SaveChanges();
         return "Post Created";
     }
-    public string CreateComment(string commentstring, int postID) {
+    public string CreateComment(DateTime dateofcomment, string author, string commentstring, int postID) {
         Post post = database.Posts.FirstOrDefault(p => p.PostID == postID);
-        database.Comments.Add(new Comment { CommentString = commentstring, Post = post});
+        database.Comments.Add(new Comment { DateOfComment = DateTime.Now, Author = author, CommentString = commentstring, Post = post});
         database.SaveChanges();
         return "Comment Created";
     }

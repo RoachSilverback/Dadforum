@@ -31,6 +31,7 @@ else
 <div class="tableofpost">
     <table>
         <tr>
+            <th>Dato</th>
             <th>Author</th>
             <th>Content</th>
             <th>Upvotes</th>
@@ -39,6 +40,7 @@ else
         @foreach (var post in posts)
         {
             <tr>
+                <td>@post.DateOfSubmission</td>
                 <td>@post.NameOfAuthor</td>
                 <td><a href="/api/posts/@post.PostID">@post.PostString</a></td>
                 <td>@post.Upvotes</td>

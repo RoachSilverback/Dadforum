@@ -23,6 +23,10 @@
     {
       width: 600px;
     }
+    input.height{
+      padding: 15px 10px;
+      line-height: 140%;
+    }
 </style>
 
     <h3>Skriv din Post nedenunder, fader</h3>
@@ -31,12 +35,14 @@
     <table>
       <th>Dit navn</th>
       <tr><input type="input" placeholder="Skriv dit navn her, fader" id="nameofauthor" name="nameofauthor" @bind-value="nameofauthor" required/>
-        <label for="nameofauthor" class="form__label"></label>
       </tr>
       <th>Din Post</th>
       <tr>
         <input type="input" placeholder="Skriv din post her, fader"  id="poststring" name="poststring"  @bind-value="poststring" required/>
-        <label for="nameofauthor" class="form__label"></label>
+      </tr>
+      <th>Dit content</th>
+      <tr>
+        <input class="height" type="text" placeholder="Skriv dit content her, fader" id="content" name="content" @bind-value="content" required/>
       </tr>
       <br/>
       <tr>
@@ -50,12 +56,13 @@
     
     public string? nameofauthor;
     public string? poststring;
+    public string? content;
     private async void CreateNewPost()
     {
         if (poststring == null && nameofauthor == null)
         {
             return;
         }
-        await ApiService.CreatePost(nameofauthor, poststring);
+        await ApiService.CreatePost(nameofauthor, poststring, content);
     }
 }

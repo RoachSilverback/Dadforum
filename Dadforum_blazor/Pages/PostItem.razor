@@ -52,6 +52,7 @@ else
     <div class="post">
         <h5>Name of Author - @Post.NameOfAuthor</h5>
         <p>Post - @Post.PostString</p>
+        <p>Content - @Post.Content</p>
     </div>
 
     <br/>
@@ -61,6 +62,8 @@ else
         
         <table>
             <tr>
+                <th>Dato for kommentar</th>
+                <th>Author</th>
                 <th>Kommentar</th>
                 <th>Upvotes</th>
                 <th>Downvotes</th> 
@@ -68,6 +71,8 @@ else
             @foreach (var comment in Post.Comments)
             {
                 <tr>
+                    <td>@comment.DateOfComment</td>
+                    <td>@comment.Author</td>
                     <td>@comment.CommentString</td>
                     <td>@comment.Upvotes</td>                 
                     <td>@comment.Downvotes</td>

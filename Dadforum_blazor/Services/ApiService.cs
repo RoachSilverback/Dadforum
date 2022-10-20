@@ -32,11 +32,11 @@ public class ApiService
         return await http.GetFromJsonAsync<Post>(url);
     }
 
-    public async Task<Comment> CreateComment(string commentstring, int postId)
+    public async Task<Comment> CreateComment(string author, string commentstring, int postId)
     {
         string url = $"{baseAPI}/api/Comments";
 
-        HttpResponseMessage msg = await http.PostAsJsonAsync(url, new {commentstring, postId});
+        HttpResponseMessage msg = await http.PostAsJsonAsync(url, new {author, commentstring, postId});
         
         string json = msg.Content.ReadAsStringAsync().Result;
 
@@ -47,11 +47,11 @@ public class ApiService
         return newComment;
     }
 
-    public async Task<Post> CreatePost(string nameofauthor, string poststring)
+    public async Task<Post> CreatePost(string nameofauthor, string poststring, string content)
     {
         string url = $"{baseAPI}/api/Createposts";
 
-        HttpResponseMessage msg = await http.PostAsJsonAsync(url, new {nameofauthor, poststring});
+        HttpResponseMessage msg = await http.PostAsJsonAsync(url, new {nameofauthor, poststring, content});
 
         string json = msg.Content.ReadAsStringAsync().Result;
 

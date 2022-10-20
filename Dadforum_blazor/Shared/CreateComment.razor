@@ -12,6 +12,8 @@
 
 <div class="createcomment">
     <br/>
+    <h3>Skriv dit navn her</h3>
+    <input placeholder="Navn" type="input" id="author" @bind-value="author"/>
     <h3>Skriv din Kommentar her</h3>
     <input placeholder="Kommentar" type="input" id="commentstring" @bind-value="commentstring"/>
     <button id="createPostButton" type="button" @onclick="CreateNewComment">Post comment</button>
@@ -22,12 +24,13 @@
     [Parameter]
     public int PostId { get; set; }
     public string? commentstring;
+    public string? author;
     private async void CreateNewComment()
     {
         if (commentstring == null)
         {
             return;
         }
-        await apiService.CreateComment(commentstring, PostId);
+        await apiService.CreateComment(author, commentstring, PostId);
     }
 }

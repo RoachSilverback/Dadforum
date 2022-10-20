@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Dadforum.Migrations
 {
-    public partial class initialmigrate : Migration
+    public partial class initalmigraiton : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +15,10 @@ namespace Dadforum.Migrations
                 {
                     PostID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    DateOfSubmission = table.Column<DateTime>(type: "TEXT", nullable: false),
                     NameOfAuthor = table.Column<string>(type: "TEXT", nullable: true),
                     PostString = table.Column<string>(type: "TEXT", nullable: true),
+                    Content = table.Column<string>(type: "TEXT", nullable: true),
                     Upvotes = table.Column<int>(type: "INTEGER", nullable: false),
                     Downvotes = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -30,9 +33,11 @@ namespace Dadforum.Migrations
                 {
                     CommentID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    DateOfComment = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Author = table.Column<string>(type: "TEXT", nullable: true),
                     CommentString = table.Column<string>(type: "TEXT", nullable: true),
-                    Upvotes = table.Column<int>(type: "INTEGER", nullable: false),
-                    Downvotes = table.Column<int>(type: "INTEGER", nullable: false),
+                    Upvotes = table.Column<int>(type: "INTEGER", nullable: true),
+                    Downvotes = table.Column<int>(type: "INTEGER", nullable: true),
                     PostID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
