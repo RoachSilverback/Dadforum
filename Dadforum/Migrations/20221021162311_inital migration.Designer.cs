@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dadforum.Migrations
 {
     [DbContext(typeof(PostContext))]
-    [Migration("20221020123433_inital migraiton")]
-    partial class initalmigraiton
+    [Migration("20221021162311_inital migration")]
+    partial class initalmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

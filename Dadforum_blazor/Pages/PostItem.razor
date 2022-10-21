@@ -11,7 +11,7 @@
     {
         position: relative;
         padding: 5px;       
-        width: 800px;
+        width: 1400px;
         font-size: x-large;
         background-color: beige;
         border: solid;
@@ -23,7 +23,7 @@
     {
         position: relative;
         padding: 10px;
-        width: 800px;
+        width: 1400px;
         background-color: beige;
         border: solid;
         border-color: black;
@@ -33,7 +33,7 @@
     {
         position: static;
         padding: 5px;
-        width: 800px;
+        width: 1400px;
         background-color: beige;
         border: solid;
         border-color: black;
@@ -50,7 +50,8 @@
 else 
 {
     <div class="post">
-        <h5>Name of Author - @Post.NameOfAuthor</h5>
+        <p>Author - @Post.NameOfAuthor</p>
+        <p>Dato - @Post.DateOfSubmission</p>
         <p>Post - @Post.PostString</p>
         <p>Content - @Post.Content</p>
     </div>
@@ -58,7 +59,7 @@ else
     <br/>
 
     <div class="kommentarer">
-        <h3>Comment</h3>
+        <h3>Comments</h3>
         
         <table>
             <tr>

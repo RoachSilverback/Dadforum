@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dadforum.Migrations
 {
-    public partial class initalmigraiton : Migration
+    public partial class initalmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
